@@ -6,6 +6,8 @@
     <edmx:Diagrams>
       <Diagram DiagramId="54595d9767eb47c69e589d7db7df9b6c" Name="Diagram1">
         <EntityTypeShape EntityType="DAL.Test" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DAL.OtherTest" Width="1.5" PointX="0.75" PointY="4" />
+        <AssociationConnector Association="DAL.FK_Test_OtherTest" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -12,12 +12,18 @@ namespace DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class Test
+    public partial class OtherTest
     {
-        public int Id { get; set; }
-        public string TestString { get; set; }
-        public Nullable<int> OtherTestId { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public OtherTest()
+        {
+            this.Tests = new HashSet<Test>();
+        }
     
-        public virtual OtherTest OtherTest { get; set; }
+        public int Id { get; set; }
+        public string AnotherString { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Test> Tests { get; set; }
     }
 }

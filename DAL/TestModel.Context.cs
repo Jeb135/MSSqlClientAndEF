@@ -26,5 +26,6 @@ namespace DAL
         }
     
         public virtual DbSet<Test> Tests { get; set; }
+        public virtual DbSet<OtherTest> OtherTests { get; set; }
     }
 }

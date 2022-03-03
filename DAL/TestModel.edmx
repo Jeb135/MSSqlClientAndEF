@@ -4,19 +4,43 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DAL.Store" Provider="Microsoft.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DAL.Store" Provider="Microsoft.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="OtherTest">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="AnotherString" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
         <EntityType Name="Test">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="TestString" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="OtherTestId" Type="int" />
         </EntityType>
+        <Association Name="FK_Test_OtherTest">
+          <End Role="OtherTest" Type="Self.OtherTest" Multiplicity="0..1" />
+          <End Role="Test" Type="Self.Test" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OtherTest">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Test">
+              <PropertyRef Name="OtherTestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="DALStoreContainer">
+          <EntitySet Name="OtherTest" EntityType="Self.OtherTest" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Test" EntityType="Self.Test" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Test_OtherTest" Association="Self.FK_Test_OtherTest">
+            <End Role="OtherTest" EntitySet="OtherTest" />
+            <End Role="Test" EntitySet="Test" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DAL" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -26,10 +50,37 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="TestString" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-        </EntityType>
+          <Property Name="OtherTestId" Type="Int32" />
+          <NavigationProperty Name="OtherTest" Relationship="DAL.FK_Test_OtherTest" FromRole="Test" ToRole="OtherTest" />
+          </EntityType>
         <EntityContainer Name="EFModels" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Tests" EntityType="Self.Test" />
+          <EntitySet Name="OtherTests" EntityType="DAL.OtherTest" />
+          <AssociationSet Name="FK_Test_OtherTest" Association="DAL.FK_Test_OtherTest">
+            <End Role="OtherTest" EntitySet="OtherTests" />
+            <End Role="Test" EntitySet="Tests" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="OtherTest">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="AnotherString" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tests" Relationship="DAL.FK_Test_OtherTest" FromRole="OtherTest" ToRole="Test" />
+        </EntityType>
+        <Association Name="FK_Test_OtherTest">
+          <End Type="DAL.OtherTest" Role="OtherTest" Multiplicity="0..1" />
+          <End Type="DAL.Test" Role="Test" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OtherTest">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Test">
+              <PropertyRef Name="OtherTestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -39,8 +90,17 @@
           <EntitySetMapping Name="Tests">
             <EntityTypeMapping TypeName="DAL.Test">
               <MappingFragment StoreEntitySet="Test">
+                <ScalarProperty Name="OtherTestId" ColumnName="OtherTestId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="TestString" ColumnName="TestString" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OtherTests">
+            <EntityTypeMapping TypeName="DAL.OtherTest">
+              <MappingFragment StoreEntitySet="OtherTest">
+                <ScalarProperty Name="AnotherString" ColumnName="AnotherString" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

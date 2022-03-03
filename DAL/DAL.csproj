@@ -40,6 +40,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>TestModel.tt</DependentUpon>
     </Compile>
+    <Compile Update="OtherTest.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>TestModel.tt</DependentUpon>
+    </Compile>
     <Compile Update="TestModel.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
