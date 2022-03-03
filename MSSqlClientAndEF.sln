@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31727.386
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSSqlClientAndEF", "MSSqlClientAndEF\MSSqlClientAndEF.csproj", "{CD4677CD-8AC7-4CEB-8E8F-44847099AACE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{DE4F217E-D99A-4321-A322-BCB2A07137F2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp", "ConsoleApp\ConsoleApp.csproj", "{308C4C52-D1CE-480D-A86F-BED1A70105B2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CD4677CD-8AC7-4CEB-8E8F-44847099AACE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD4677CD-8AC7-4CEB-8E8F-44847099AACE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD4677CD-8AC7-4CEB-8E8F-44847099AACE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD4677CD-8AC7-4CEB-8E8F-44847099AACE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE4F217E-D99A-4321-A322-BCB2A07137F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE4F217E-D99A-4321-A322-BCB2A07137F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE4F217E-D99A-4321-A322-BCB2A07137F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE4F217E-D99A-4321-A322-BCB2A07137F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{308C4C52-D1CE-480D-A86F-BED1A70105B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{308C4C52-D1CE-480D-A86F-BED1A70105B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{308C4C52-D1CE-480D-A86F-BED1A70105B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{308C4C52-D1CE-480D-A86F-BED1A70105B2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {65A57C4A-F3B4-4925-93A1-B05A80E31976}
+	EndGlobalSection
+EndGlobal
